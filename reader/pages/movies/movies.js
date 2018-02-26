@@ -18,7 +18,7 @@ Page({
 	onMoreTap: function(event) {
 		var category = event.currentTarget.dataset.category
 		wx.navigateTo({ //点击更多跳转到更多电影页面
-			url: 'more-movie/more-movie?category' + category //这里就是得到不同电影类型的方法  重点
+			url: 'more-movie/more-movie?category=' + category //这里就是得到不同电影类型的方法  重点
 		})
 	},
 	getMovieListData: function(url, settedKey, categoryTitle) { //访问api的公共方法
