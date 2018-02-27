@@ -10,6 +10,23 @@ function convertToStarsArray(stars) {
   }
   return array;
 }
+
+function http(url, callback) { //访问api的公共方法  因为是异步的方法所以要有个回调函数  回调函数就是一个参数，将这个函数作为参数传到另一个函数里面，当那个函数执行完之后，再执行传进去的这个函数。这个过程就叫做回调。
+  wx.request({
+    url: url,
+    method: 'GET',
+    header: { //必须要是设置header
+      "Content-Type": "json"
+    },
+    success: function(res) {
+      callback(res.data)
+    },
+    fail: function(error) {
+      console.log(error)
+    },
+  })
+}
 module.exports = {
-  convertToStarsArray: convertToStarsArray
+  convertToStarsArray: convertToStarsArray,
+  http: http
 }
