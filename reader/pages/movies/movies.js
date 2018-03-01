@@ -4,7 +4,10 @@ Page({
 	data: {
 		inTheaters: {},
 		comingSoon: {},
-		top250: {}
+		top250: {},
+		containerShow: true,
+		searchPanelShow: false,
+		searchResult: {}
 	},
 	onLoad: function(event) {
 		var inTheatersUrl = app.globalData.doubanBase + '/v2/movie/in_theaters' + "?start=0&count=3"; //取所有数据的前三条数据
@@ -37,6 +40,24 @@ Page({
 				console.log(error)
 			},
 		})
+	},
+	onCancelImgTap: function(event) {
+		this.setData({
+			containerShow: true,
+			searchPanelShow: false,
+			searchReasult: {} //再次进来电影数据清空
+		})
+	},
+	onBindFocus: function(event) {
+		this.setData({
+			containerShow: false,
+			searchPanelShow: true
+		})
+	},
+	onBindConfirm: function(event) {
+		var text = event.detail.value;
+		var searchUrl = app.globalData.doubanBase + "/v2/movie/search?q=" + text; //获取豆瓣查询的接口
+		this.getMovieListData(searchUrl, "searchResult", "");
 	},
 	processDoubanData: function(moviesDouban, settedKey, categoryTitle) { //参数moviesDouban  就是从豆瓣api中取回来的数据  settedKey是区分到底是inTheaters，comingSoon还是top250Url  categoryTitle是取正在热映，即将上映，top250的参数
 		var movies = [];

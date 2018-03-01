@@ -2,6 +2,7 @@
 <template name="movieGridTemplate">
   <!-- 实现onScrollLower方法事件只能在调用发more-movie.js实现，不能再模板中实现 -->
   <view class="grid-container">
+
     <block wx:for="{{movies}}" wx:for-item="movie">
       <view class="single-view-container"> 
         <template is="movieTemplate" data="{{...movie}}" />
