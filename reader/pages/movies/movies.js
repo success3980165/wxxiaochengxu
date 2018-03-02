@@ -24,6 +24,13 @@ Page({
 			url: 'more-movie/more-movie?category=' + category //这里就是得到不同电影类型的方法  重点
 		})
 	},
+
+	onMovieTap: function(event) { //点击电影调转到电影详情页面
+		var movieId = event.currentTarget.dataset.movieid; //拿到movieId  这个事跳转和传movieId的方法在这
+		wx.navigateTo({
+			url: 'movie-detail/movie-detail?id=' + movieId
+		})
+	},
 	getMovieListData: function(url, settedKey, categoryTitle) { //访问api的公共方法
 		var that = this;
 		wx.request({

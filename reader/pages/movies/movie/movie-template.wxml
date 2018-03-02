@@ -1,8 +1,8 @@
 <import src="../stars/stars-template.wxml" />
 <template name="movieTemplate">
-	<view class="movie-container">
+	<view class="movie-container" catchtap="onMovieTap" data-movieId="{{movieId}}"> <!-- 获取movieId要用data绑定的方式 -->
 		<image class="movie-img" src="{{coverageUrl}}"></image>
 		<text class="movie-title">{{title}}</text>
-		<template is="starsTemplate" data="{{stars:stars,score:average}}"/> <!-- 这里的stars和average是movies.js中的，只不过这里又再次把它封装成stars和score了从新传到data中去了 这是新的数据绑定的方式-->
+		<template is="starsTemplate" data="{{stars:stars,score:average}}"/> <!-- 这里的stars和average是movies.js中的，只不过这里又再次把它封装成stars和score了从新传到data中去了 这是新的数据绑定的方式 这里的data就是获取数据用的-->
 	</view>
 </template>

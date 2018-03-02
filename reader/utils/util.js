@@ -26,7 +26,31 @@ function http(url, callback) { //访问api的公共方法  因为是异步的方
     },
   })
 }
+
+function convertToCastString(casts) { //演员的名字用斜杠拼起来的函数
+  var castsjoin = "";
+  for (var idx in casts) {
+    castsjoin = castsjoin + casts[idx].name + " / ";
+  }
+  return castsjoin.substring(0, castsjoin.length - 2);
+}
+
+function convertToCastInfos(casts) {
+  var castsArray = []
+  for (var idx in casts) {
+    var cast = {
+      img: casts[idx].avatars ? casts[idx].avatars.large : "",
+      name: casts[idx].name
+    }
+    castsArray.push(cast);
+  }
+  return castsArray;
+}
+
 module.exports = {
   convertToStarsArray: convertToStarsArray,
-  http: http
+  http: http,
+  convertToCastString: convertToCastString,
+  convertToCastInfos: convertToCastInfos
+
 }
