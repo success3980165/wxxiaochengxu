@@ -44,6 +44,7 @@ Page({
     var refreshUrl = this.data.requestUrl +
       "?star=0&count=20";
     this.data.movies = {};
+    this.data.totalCount = 0;
     this.data.isEmpty = true; //加载后需要把数据置空，否则会走if(!this.data.isEmpty) 这样就会新的0-19号数据和老的0-19号数据从新结合新的数组，出现重复数据
     util.http(refreshUrl, this.processDoubanData);
     wx.showNavigationBarLoading();
@@ -89,5 +90,11 @@ Page({
 
       }
     })
-  }
+  },
+  onMovieTap: function(event) { //点击电影调转到电影详情页面
+    var movieId = event.currentTarget.dataset.movieid; //拿到movieId  这个事跳转和传movieId的方法在这
+    wx.navigateTo({
+      url: '../movie-detail/movie-detail?id=' + movieId
+    })
+  },
 })
