@@ -14,7 +14,7 @@
 	margin-top:160rpx;
 }
 .moto {
-	font-size: 22px;
+	font-size: 20px;
 	font-weight: bold;
 	line-height: 80rpx;
 	color: #405f80;
@@ -22,7 +22,7 @@
 .moto-container {
 	margin-top:200rpx;
 	border: 1px solid #405f80;
-	width: 320rpx;
+	width: 350rpx;
 	height: 80rpx;
 	border-radius: 5px;
 	text-align: center;
